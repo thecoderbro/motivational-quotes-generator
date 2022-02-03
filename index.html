@@ -1,0 +1,95 @@
+<!-- Motivational quotes generator using javascript fetch API by TheCoderBro  -->
+<html>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-family: "Roboto", sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+    }
+    section {
+      width: 100%;
+      padding: 100px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      position: relative;
+      width: 605px;
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px 30px 25px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-bottom: 23px;
+      font-size: 35px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .container p {
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 3rem;
+      text-align: justify;
+      font-weight: 400;
+    }
+    h3 {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+    button {
+      border: none;
+      color: #fff;
+      outline: none;
+      font-size: 16px;
+      margin-top: 23px;
+      cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 30px;
+      background: #e84118;
+    }
+    @media screen and (max-width: 768px) {
+      .container {
+        width: 100%;
+      }
+    }
+  </style>
+  <body>
+    <section>
+      <div class="container">
+        <h2>Quote of the Day✌</h2>
+        <div>
+          <p id="quote">
+            All our dreams can come true, if we have the courage to pursue them.
+          </p>
+          <span>______________________</span>
+          <h3 id="author">Walt Disney</h3>
+        </div>
+        <button id="btn">Get a Quote☕</button>
+      </div>
+    </section>
+    <script>
+      let quote = document.getElementById("quote");
+      let author = document.getElementById("author");
+      let btn = document.getElementById("btn");
+      
+      const url = " https://api.quotable.io/random";
+      let getQuote = () => {
+        fetch(url)
+          .then((data) => data.json())
+          .then((item) => {
+            quote.innerText = item.content;
+            author.innerText = item.author;
+          });
+      };
+      window.addEventListener("load", getQuote);
+      btn.addEventListener("click", getQuote);
+    </script>
+  </body>
+</html>
